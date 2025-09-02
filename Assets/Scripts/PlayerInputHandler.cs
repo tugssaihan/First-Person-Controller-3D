@@ -27,8 +27,10 @@ public class PlayerInputHandler : MonoBehaviour
 
     void Awake()
     {
+        // create action map reference
         InputActionMap mapReference = playerControls.FindActionMap(actionMapName);
 
+        // use action map reference and assign each input action
         movementAction = mapReference.FindAction(movement);
         rotationAction = mapReference.FindAction(rotation);
         jumpAction = mapReference.FindAction(jump);
@@ -39,6 +41,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void SubscribeActionValuesToInputEvents()
     {
+        // subscribe and unsubscribe to events
         movementAction.performed += inputInfo => MovementInput = inputInfo.ReadValue<Vector2>();
         movementAction.canceled += inputInfo => MovementInput = Vector2.zero;
 
@@ -54,11 +57,13 @@ public class PlayerInputHandler : MonoBehaviour
 
     void OnEnable()
     {
+        // enable
         playerControls.FindActionMap(actionMapName).Enable();
     }
 
     void OnDisable()
     {
+        // disable
         playerControls.FindActionMap(actionMapName).Disable();
     }
 }
