@@ -33,6 +33,8 @@ public class PlayerInputHandler : MonoBehaviour
         rotationAction = mapReference.FindAction(rotation);
         jumpAction = mapReference.FindAction(jump);
         sprintAction = mapReference.FindAction(sprint);
+
+        SubscribeActionValuesToInputEvents();
     }
 
     private void SubscribeActionValuesToInputEvents()
